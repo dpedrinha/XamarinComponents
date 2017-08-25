@@ -2,15 +2,11 @@
 
 <metadata>
   <!-- Remove some APIs which aren't relative to this binding -->
-  <remove-node path="/api/package[@name='com.google.android.gms.gcm']/interface[@name='INetworkTaskCallback']" />
-  <remove-node path="/api/package[@name='com.google.android.gms.gcm']/class[@name='INetworkTaskCallback.Stub']" />
-  <remove-node path="/api/package[@name='com.google.android.gms.gcm']/class[@name='INetworkTaskCallback.Stub.Proxy']" />
   <remove-node path="/api/package[@name='com.firebase.jobdispatcher']/interface[@name='FirebaseJobDispatcher.ScheduleResult']" />
   <remove-node path="/api/package[@name='com.firebase.jobdispatcher']/interface[@name='JobService.JobResult']" />
 
   <!-- Normalize the namespaces for .NET -->
   <attr path="/api/package[@name='com.firebase.jobdispatcher']" name="managedName">Firebase.JobDispatcher</attr>
-  <attr path="/api/package[@name='com.google.android.gms.gcm']" name="managedName">Android.Gms.Gcm</attr>
 
   <add-node path="/api/package[@name='com.firebase.jobdispatcher']">
     <class abstract="true" deprecated="not deprecated" extends="android.app.Service"
@@ -21,13 +17,13 @@
         <parameter name="p0" type="com.firebase.jobdispatcher.JobParameters">
         </parameter>
       </method>
-      <method abstract="true" deprecated="not deprecated" final="false" name="onJobFinished" native="false"
+<!--      <method abstract="true" deprecated="not deprecated" final="false" name="onJobFinished" native="false"
               return="void" static="false" synchronized="false" visibility="protected">
         <parameter name="p0" type="com.firebase.jobdispatcher.JobParameters">
         </parameter>
         <parameter name="p1" type="int">
         </parameter>
-      </method>
+      </method>-->
     </class>
 
     <class abstract="false" deprecated="not deprecated" extends="java.lang.Object"
@@ -53,12 +49,13 @@
     <class abstract="false" deprecated="not deprecated" extends="com.firebase.jobdispatcher.JobTrigger"
            extends-generic-aware="com.firebase.jobdispatcher.JobTrigger" final="true"
            name="JobTrigger.ExecutionWindowTrigger" static="true" visibility="public">
-      <constructor deprecated="not deprecated" final="false" name="ExecutionWindowTrigger" static="false"
+<!--      <constructor deprecated="not deprecated" final="false" name="ExecutionWindowTrigger" static="false"
                    type="com.firebase.jobdispatcher.JobTrigger.ExecutionWindowTrigger" visibility="public">
         <parameter name="p0" type="int"></parameter>
         <parameter name="p1" type="int"></parameter>
       </constructor>
-      <method abstract="false" deprecated="not deprecated" final="false" name="getWindowEnd" native="false"
+-->
+	  <method abstract="false" deprecated="not deprecated" final="false" name="getWindowEnd" native="false"
               return="int" static="false" synchronized="false" visibility="public">
       </method>
       <method abstract="false" deprecated="not deprecated" final="false" name="getWindowStart" native="false"
@@ -85,14 +82,14 @@
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='newRetryStrategy' and count(parameter)=3 and parameter[1][@type='int'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[@name='p0']" name="name">policy</attr>
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='newRetryStrategy' and count(parameter)=3 and parameter[1][@type='int'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[@name='p1']" name="name">initialBackoff</attr>
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='newRetryStrategy' and count(parameter)=3 and parameter[1][@type='int'] and parameter[2][@type='int'] and parameter[3][@type='int']]/parameter[@name='p2']" name="name">maximumBackoff</attr>
-  <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='schedule' and count(parameter)=1 and parameter[1][@type='com.firebase.jobdispatcher.Job']]/parameter[@name='p0']" name="name">job</attr>
+<!--  <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='schedule' and count(parameter)=1 and parameter[1][@type='com.firebase.jobdispatcher.Job']]/parameter[@name='p0']" name="name">job</attr>-->
 
   <!-- Meaningful parameter names: GooglePlayDriver -->
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='GooglePlayDriver']/constructor[@name='GooglePlayDriver' and count(parameter)=1 and parameter[1][@type='android.content.Context']]/parameter[@name='p0']" name="name">context</attr>
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='GooglePlayDriver']/method[@name='cancel' and count(parameter)=1 and parameter[1][@type='java.lang.String']]/parameter[@name='p0']" name="name">tag</attr>
-  <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='schedule' and count(parameter)=1 and parameter[1][@type='com.firebase.jobdispatcher.Job']]/parameter[@name='p0']" name="name">tag</attr>
+<!--  <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='schedule' and count(parameter)=1 and parameter[1][@type='com.firebase.jobdispatcher.Job']]/parameter[@name='p0']" name="name">tag</attr>
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/class[@name='FirebaseJobDispatcher']/method[@name='schedule' and count(parameter)=1 and parameter[1][@type='com.firebase.jobdispatcher.Job']]/parameter[@name='p0']" name="name">job</attr>
-
+-->
   <!-- Meaningful parameter names: IDriver -->
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/interface[@name='Driver']/method[@name='cancel' and count(parameter)=1 and parameter[1][@type='java.lang.String']]/parameter[@name='p0']" name="name">tag</attr>
   <attr path="/api/package[@name='com.firebase.jobdispatcher']/interface[@name='Driver']/method[@name='schedule' and count(parameter)=1 and parameter[1][@type='com.firebase.jobdispatcher.Job']]/parameter[@name='p0']" name="name">job</attr>
